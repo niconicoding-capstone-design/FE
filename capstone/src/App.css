@@ -1,0 +1,197 @@
+/* App.css */
+body {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.app {
+  position: relative;
+  background-color: white;
+  overflow-x: hidden;
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 0 0rem;
+  box-sizing: border-box;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../public/homepage1.png);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08; /* 원하는 투명도 */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 앱 안의 콘텐츠를 위로 올리기 위해 z-index 추가 */
+.app > *:not(.background-overlay) {
+  position: relative;
+  z-index: 1;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: #8321ff;
+  font-family: "Newsreader", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-left: 40px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.2rem;
+  font-family: Inter, sans-serif;
+  flex-wrap: wrap;
+  margin-right: 40px;
+
+}
+
+.login-button,.user-email {
+  background: rgba(130, 32, 255, 0.9);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.main {
+  padding: 0rem 0;
+  text-align: center;
+}
+
+.hero h1 {
+  text-align: left;
+  margin-left: 40px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1.5;
+}
+
+.hero p {
+  margin-left: 40px;
+  text-align: left;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.upload-box {
+  margin: 2rem auto 1.5rem;
+  width: 100%;
+  max-width: 700px;
+  aspect-ratio: 2 / 1;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+  border: 0.5px solid black;
+  position: relative;
+}
+
+/* + 기호를 박스 정중앙에 */
+.plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  color: black;
+}
+
+/* 텍스트는 하단 중앙에 */
+.upload-text {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  padding: 1rem 2rem;
+  background: rgba(142, 72, 232, 0.4);
+  border-radius: 8px;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Inter, sans-serif;
+  cursor: pointer;
+  
+  width: auto; /* 버튼 크기 고정 해제 */
+  min-width: 160px; /* 너무 작아지지 않게 최소 너비만 설정 */
+  text-align: center;
+}
+.footer-section {
+  padding: 4rem 0;
+  font-size: 1rem;
+  font-family: Inter, sans-serif;
+  line-height: 1.6;
+  color: black;
+  text-align: center;
+}
+
+.footer {
+  width: 100%;
+  height: 60px;
+  background-color: #d9d9d9;
+}
+
+/* 반응형: 화면 너비 768px 이하 */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .upload-text {
+    font-size: 1rem;
+  }
+
+  .action-button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
