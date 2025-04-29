@@ -1,105 +1,168 @@
 /* Interview.css */
 .interview-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-    padding: 40px;
-    background-color: #fafafa;
-    gap: 20px;
-  }
-  
-  .video-section, .script-section {
-    background: white;
-    border: 2px solid #a17ad9;
-    border-radius: 10px;
-    padding: 20px;
-    width: 45%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .video {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    background-color: black;
-  }
-  
-  .video-header, .script-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #6a4c93;
-  }
-  
-  .timer {
-    font-size: 16px;
-  }
-  
-  .script-content {
-    margin-top: 10px;
-    max-height: 400px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
-  .finish-button {
-    margin-top: 20px;
-    width: 100%;
-    padding: 10px;
-    background-color: #a17ad9;
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .finish-button:hover {
-    background-color: #8e5bd6;
-  }
-  
-  /* 토글 스위치 (ON/OFF 버튼 디자인용) */
-  .toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-  }
-  
-  .toggle-switch input {
-    display: none;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #ccc;
-    border-radius: 20px;
-    transition: 0.4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 16px; width: 16px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    border-radius: 50%;
-    transition: 0.4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #a17ad9;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(20px);
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 40px;
+  background-color: #fafafa;
+  gap: 20px;
+}
+
+/* .interview-header 수정 */
+.interview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  flex-wrap: wrap; /* 이 부분도 문제를 일으킬 수 있음 */
+}
+
+.interview-logo {
+  color: #8321ff;
+  font-family: "Newsreader", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-left: 40px;
+}
+.interview-nav {
+  display: flex;
+  gap: 20px;
+  margin-right: 40px;
+  justify-content: flex-end; /* 자식 요소들이 오른쪽에 정렬되도록 설정 */
+}
+
+.interview-nav a {
+  color: #6a4c93;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.interview-nav a:hover {
+  color: #8321ff;
+}
+
+.interview-login-button {
+  background-color: #a17ad9;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.interview-login-button:hover {
+  background-color: #8e5bd6;
+}
+
+.video-section, .script-section {
+  background: white;
+  border: 2px solid #a17ad9;
+  border-radius: 10px;
+  padding: 20px;
+  width: 45%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background-color: black;
+}
+
+.video-header, .script-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #6a4c93;
+}
+
+.timer {
+  font-size: 16px;
+}
+
+.script-content {
+  margin-top: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center; /* 버튼들을 가운데로 정렬 */
+  gap: 10px; /* 버튼 사이 간격 추가 */
+  margin-top: 20px;
+  width: 100%; /* 부모 요소의 전체 너비를 차지하도록 설정 */
+}
+
+.start-button,
+.stop-button,
+.resume-button,
+.finish-button {
+  padding: 10px 20px; /* 좌우 padding 증가 */
+  background-color: #a17ad9;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.start-button:hover,
+.stop-button:hover,
+.resume-button:hover,
+.finish-button:hover {
+  background-color: #8e5bd6;
+}
+
+/* 토글 스위치 (ON/OFF 버튼 디자인용) */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px; width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #a17ad9;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}

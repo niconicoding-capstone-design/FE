@@ -23,7 +23,8 @@ body {
   background-image: url(../public/homepage1.png);
   background-size: cover;
   background-position: center;
-  opacity: 0.08; /* 원하는 투명도 */
+  opacity: 0.08;
+  /* 원하는 투명도 */
   z-index: 0;
   pointer-events: none;
 }
@@ -33,6 +34,7 @@ body {
   position: relative;
   z-index: 1;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -58,10 +60,10 @@ body {
   font-family: Inter, sans-serif;
   flex-wrap: wrap;
   margin-right: 40px;
-
 }
 
-.login-button,.user-email {
+.login-button,
+.user-email {
   background: rgba(130, 32, 255, 0.9);
   color: white;
   padding: 0.5rem 1.5rem;
@@ -102,14 +104,13 @@ body {
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
   border: 0.5px solid black;
   position: relative;
+  display: flex; /* Enable Flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
 /* + 기호를 박스 정중앙에 */
 .plus {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 4rem;
   color: black;
 }
@@ -127,6 +128,19 @@ body {
   white-space: nowrap;
 }
 
+.upload-info {
+  text-align: center; /* Center text within upload-info */
+}
+
+.file-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.upload-success {
+  color: green;
+  font-size: 1em;
+}
 
 .button-group {
   display: flex;
@@ -145,11 +159,13 @@ body {
   color: rgba(0, 0, 0, 0.8);
   font-family: Inter, sans-serif;
   cursor: pointer;
-  
-  width: auto; /* 버튼 크기 고정 해제 */
-  min-width: 160px; /* 너무 작아지지 않게 최소 너비만 설정 */
+  width: auto;
+  /* 버튼 크기 고정 해제 */
+  min-width: 160px;
+  /* 너무 작아지지 않게 최소 너비만 설정 */
   text-align: center;
 }
+
 .footer-section {
   padding: 4rem 0;
   font-size: 1rem;
