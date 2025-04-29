@@ -22,7 +22,7 @@ export const register = async (data) => {
 export const refresh = async () => {
   const refreshToken = localStorage.getItem("refreshToken");
   const res = await axios.post(
-    `${API}/auth/refresh`,
+    `${API}/auth/refresh`, /* `${API}/api/auth/refresh` */
     {},
     { headers: { "Refresh-Token": refreshToken } }
   );

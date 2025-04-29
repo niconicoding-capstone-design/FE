@@ -1,35 +1,52 @@
+// App.js
 import React, { useRef, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"; 
-import Login from "./pages/Login"; 
-import Register from "./pages/Register"; 
-import Interview from "./pages/Interview"; 
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
+import { uploadScript } from "./api/scriptApi"; // axios 버전 사용
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Interview from "./pages/Interview";
 import ScriptUploadPage from "./pages/ScriptUploadPage";
- // 새 페이지 추가할 예정
 import "./App.css";
 
-// 홈화면 컴포넌트
 function Home({ userEmail }) {
   const fileInputRef = useRef(null);
   const [uploadedFile, setUploadedFile] = useState(null);
   const navigate = useNavigate();
 
   const handleUploadBoxClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
+    fileInputRef.current?.click();
   };
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
-    if (file) {
-      console.log("업로드된 파일:", file.name);
-      setUploadedFile(file);
-    }
+    if (!file) return;
+
+    setUploadedFile(file);
+    const reader = new FileReader();
+
+    reader.onload = async (e) => {
+      const scriptText = e.target.result;
+      try {
+        const responseData = await uploadScript(scriptText);
+        console.log("서버 응답:", responseData);
+        alert("스크립트가 서버에 성공적으로 업로드되었습니다.");
+      } catch (error) {
+        console.error("스크립트 업로드 실패:", error.response || error);
+        const status = error.response?.status || "오류";
+        alert(`스크립트 업로드 실패: ${status}`);
+      }
+    };
+
+    reader.onerror = () => {
+      alert("파일 읽기 중 오류 발생");
+    };
+
+    reader.readAsText(file);
   };
 
   const handleGoToInterview = () => {
     if (uploadedFile) {
-      navigate("/Interview", { state: { file: uploadedFile } }); // 파일 state로 전달
+      navigate("/Interview", { state: { file: uploadedFile } });
     } else {
       alert("파일을 먼저 업로드해주세요!");
     }
@@ -41,13 +58,13 @@ function Home({ userEmail }) {
       <header className="header">
         <div className="logo">SpiCoach</div>
         <nav className="nav">
-        <Link to="/">Home</Link>
+          <Link to="/">Home</Link>
           <Link to="/mypage">MyPage</Link>
           {userEmail ? (
-            <span className="user-email">{userEmail}</span>  
+            <span className="user-email">{userEmail}</span>
           ) : (
             <Link to="/login">
-              <button className="login-button">Login</button> 
+              <button className="login-button">Login</button>
             </Link>
           )}
         </nav>
@@ -94,9 +111,7 @@ function Home({ userEmail }) {
         </div>
       </main>
 
-      <footer className="footer">
-        <p></p>
-      </footer>
+      <footer className="footer"></footer>
 
       <section className="footer-section">
         <div className="footer-text">
@@ -108,10 +123,8 @@ function Home({ userEmail }) {
   );
 }
 
-
-
 function App() {
-  const [userEmail, setUserEmail] = useState(""); // 이메일 저장
+  const [userEmail, setUserEmail] = useState("");
 
   return (
     <Router>
@@ -119,7 +132,7 @@ function App() {
         <Route path="/" element={<Home userEmail={userEmail} />} />
         <Route path="/login" element={<Login setUserEmail={setUserEmail} />} />
         <Route path="/register" element={<Register setUserEmail={setUserEmail} />} />
-        <Route path="/Interview" element={<Interview userEmail={userEmail} />} /> 
+        <Route path="/Interview" element={<Interview userEmail={userEmail} />} />
         <Route path="/upload" element={<ScriptUploadPage />} />
       </Routes>
     </Router>
