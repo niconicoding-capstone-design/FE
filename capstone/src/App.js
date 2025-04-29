@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { uploadScript } from "./api/scriptApi";
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"; 
 import Login from "./pages/Login"; 
 import Register from "./pages/Register"; 
@@ -19,58 +18,18 @@ function Home({ userEmail }) {
       fileInputRef.current.click();
     }
   };
-  const [uploadedText, setUploadedText] = useState("");
-  const handleFileChange = async (event) => {
+
+  const handleFileChange = (event) => {
     const file = event.target.files[0];
-    if (!file) return;
-  
-    console.log("업로드된 파일:", file.name);
-    setUploadedFile(file);
-  
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      const scriptText = e.target.result;
-      console.log("파일 내용:", scriptText);
-  
-      const token = localStorage.getItem("accessToken");
-  
-      try {
-        const response = await fetch("/api/scripts/upload", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-          },
-          body: JSON.stringify({ script: scriptText }), // 요청 본문 데이터 키를 script로 변경
-        });
-  
-        if (!response.ok) {
-          const errorData = await response.json();
-          console.error("스크립트 업로드 실패:", errorData);
-          alert(`스크립트 업로드에 실패했습니다: ${response.status}`);
-          return;
-        }
-  
-        const responseData = await response.json();
-        console.log("서버 응답:", responseData);
-        alert("스크립트가 서버에 성공적으로 업로드되었습니다.");
-  
-      } catch (error) {
-        console.error("스크립트 업로드 중 오류 발생:", error);
-        alert("스크립트 업로드 중 오류가 발생했습니다.");
-      }
-    };
-  
-    reader.onerror = () => {
-      alert("파일을 읽는 도중 오류가 발생했습니다.");
-    };
-  
-    reader.readAsText(file);
+    if (file) {
+      console.log("업로드된 파일:", file.name);
+      setUploadedFile(file);
+    }
   };
 
   const handleGoToInterview = () => {
     if (uploadedFile) {
-      navigate("/Interview", { state: { file: uploadedFile } }); 
+      navigate("/Interview", { state: { file: uploadedFile } }); // 파일 state로 전달
     } else {
       alert("파일을 먼저 업로드해주세요!");
     }
