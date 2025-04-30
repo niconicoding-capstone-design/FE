@@ -13,6 +13,7 @@ const Interview = ({ userEmail }) => {
   const [isStarted, setIsStarted] = useState(false); // 타이머 시작 여부
   const [isPaused, setIsPaused] = useState(false); // 타이머 일시 정지 여부
   const [isBlurred, setIsBlurred] = useState(false); // 스크립트 블러 여부
+  const [showQuestionModal, setShowQuestionModal] = useState(false);
 
   useEffect(() => {
     // 웹캠 연결
@@ -65,14 +66,24 @@ const Interview = ({ userEmail }) => {
   };
 
   const handleFinish = () => {
-    alert("발표가 종료되었습니다!");
-    navigate("/"); // 홈으로 이동
+    setIsPaused(true); // 멈춤 처리
+    setShowQuestionModal(true); // 모달 표시
   };
+
 
   const handleToggleBlur = () => {
     setIsBlurred((prev) => !prev); // 블러 효과 토글
   };
 
+  // ✅ 질문 선택 처리 함수
+  const handleQuestionChoice = (choice) => {
+    setShowQuestionModal(false);
+    if (choice === "yes") {
+      navigate("/question");
+    } else {
+      navigate("/");
+    }
+  };
   return (
     <div className="interview-container">
       <header className="interview-header">
@@ -92,7 +103,7 @@ const Interview = ({ userEmail }) => {
 
       <div className="video-section">
         <div className="video-header">
-          <span><input type="text" placeholder="제목을 입력하세요"></input></span>
+          <span><input type="text" placeholder="제목을 입력하세요" /></span>
           <span className="timer">진행 시간 {formatTime(time)}</span>
         </div>
         <video className="video" ref={videoRef} autoPlay muted playsInline />
@@ -106,7 +117,10 @@ const Interview = ({ userEmail }) => {
             <span className="slider"></span>
           </label>
         </div>
-        <div className="script-content" style={{ filter: isBlurred ? "blur(5px)" : "none" }}>
+        <div
+          className="script-content"
+          style={{ filter: isBlurred ? "blur(5px)" : "none" }}
+        >
           {scriptText ? scriptText : "스크립트 파일을 불러오는 중..."}
         </div>
         <div className="button-group">
@@ -135,6 +149,20 @@ const Interview = ({ userEmail }) => {
           )}
         </div>
       </div>
+
+      {/* ✅ 질문 모달 추가 */}
+      {showQuestionModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>발표가 종료되었습니다.</h2>
+            <p>질문 받기를 원하시나요?</p>
+            <div className="modal-buttons">
+              <button onClick={() => handleQuestionChoice("yes")}>네</button>
+              <button onClick={() => handleQuestionChoice("no")}>아니요</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Interview from "./pages/Interview";
 import ScriptUploadPage from "./pages/ScriptUploadPage";
+import Question from "./pages/Question";
 import "./App.css";
 
 function Home({ userEmail }) {
@@ -134,6 +135,7 @@ function App() {
         <Route path="/register" element={<Register setUserEmail={setUserEmail} />} />
         <Route path="/Interview" element={<Interview userEmail={userEmail} />} />
         <Route path="/upload" element={<ScriptUploadPage />} />
+        <Route path="/question" element={<Question userEmail={userEmail} />} />
       </Routes>
     </Router>
   );
