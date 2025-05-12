@@ -1,75 +1,133 @@
-.register-container {
-  max-width: 1440px;
-  height: 1024px;
-  margin: auto;
-  padding: 80px;
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@700&display=swap');
+
+/* 화면 전체 중앙 정렬 */
+.register-wrapper {
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 이미지 + 폼을 겹치기 위한 컨테이너 */
+.register-container {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #090808;
+}
+
+/* 배경 이미지 */
+.register-image {
+  position: absolute;
+  width: 100%;
+
+  background: url("../../public/register_backimage.png") center / cover no-repeat;
+  z-index: 0;
+  aspect-ratio: 422/269;
+}
+
+/* 보라색 오버레이 */
+.register-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(204, 176, 240, 0.3);
+}
+
+/* 중앙의 흰색 폼 박스 */
+.register-form-box {
+  width: 1265px;
+  height: 1080px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 64px 48px;
+  z-index: 1;
+  border-radius: 12px;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* 로고 텍스트 */
+.register-logo-text {
+  color: var(--Primary-primary_400, #8321FF);
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: Newsreader;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  margin: 84px 552px auto 551px;
+  /* 38px */
+  letter-spacing: -0.38px;
+}
+
+/* 제목 */
+.signup-title {
+  display: flex;
+  width: 299px;
+  height: 121px;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
-  text-align: left;
-  border: 1px solid black;
+  flex-shrink: 0;
+  color: var(--Black, #000);
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: Pretendard;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 68px;
+  margin: 27px 483px auto 483px;
+  /* 85% */
 }
 
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #8321ff;
-  margin-bottom: 2rem;
-}
-
-.signup-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-}
-
+/* 전체 폼 */
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 24px;
 }
 
-.form-group {
+.name-group {
   display: flex;
+  width: 682px;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 12px 292px auto 291px;
+
 }
 
-.form-group label {
-  font-size: 1rem;
+.reg_name {
+  color: var(--Black, #000);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 26px;
+  font-style: normal;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  line-height: normal;
 }
 
-input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.register-button {
-  width: 100%;
-  padding: 14px;
-  background-color: #8321ff;
-  color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  margin-top: 1rem;
-  cursor: pointer;
-}
-
-.login-link {
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: black;
-}
-
-.login-link a {
-  color: #8321ff;
-  font-weight: bold;
-  text-decoration: none;
+.name-group input {
+  display: flex;
+  height: 80px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 12px;
+  border: 2px solid var(--Neutral-neutral_200, #C6C6C6);
+  background: var(--White, #FFF);
+  font-family: Pretendard;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 30px;
 }

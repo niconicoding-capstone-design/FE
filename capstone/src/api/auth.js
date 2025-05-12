@@ -1,3 +1,4 @@
+//auth.js
 import axios from "axios";
 
 const API = process.env.REACT_APP_API_URL;
@@ -26,6 +27,7 @@ export const login = async (email, password) => {
 // 회원가입 요청
 export const register = async (data) => {
   console.log("Register 요청 URL:", `${API}/api/auth/register`);
+  console.log("Axios로 보낼 데이터:", data); 
 
   const res = await axios.post(`${API}/api/auth/register`, data);
 
