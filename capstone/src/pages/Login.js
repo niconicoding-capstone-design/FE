@@ -58,7 +58,7 @@ const Login = ({ setUserEmail }) => {
           <form onSubmit={handleLogin} className="form-container">
             <label className="email-input-label">이메일</label>
             <div className={`input-wrapper ${emailError ? "error" : ""}`}>
-              <input
+              <input 
                 type="email"
                 placeholder="이메일을 입력해주세요"
                 value={userEmail}
@@ -70,7 +70,7 @@ const Login = ({ setUserEmail }) => {
 
             <label className="pw-input-label">비밀번호</label>
             <div className={`input-wrapper password-wrapper ${passwordError ? "error" : ""}`}>
-              <input
+              <input 
                 type={showPassword ? "text" : "password"}
                 placeholder="비밀번호를 입력해주세요"
                 value={userPasswd}

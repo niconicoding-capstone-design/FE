@@ -106,9 +106,10 @@ const Register = ({ setUserEmail }) => {
           >
             {step === 1 && (
               <>
-                <div className="name-group">
-                  <label className="reg_name">이름</label>
+                <div className="name_num-group">
+                  <label className="reg_title">이름</label>
                   <input
+                    className="reg-input"
                     name="userName"
                     placeholder="이름을 입력해주세요"
                     value={form.userName}
@@ -118,9 +119,10 @@ const Register = ({ setUserEmail }) => {
                 </div>
 
                 <div className="form-row">
-                  <div className="form-group">
-                    <label>생년월일</label>
+                  <div className="formbirth-group">
+                    <label className="reg_title">생년월일</label>
                     <input
+                      className="regBirthGender-input"
                       name="userBirth"
                       placeholder="YYYY-MM-DD"
                       value={form.userBirth}
@@ -128,9 +130,9 @@ const Register = ({ setUserEmail }) => {
                       required
                     />
                   </div>
-                  <div className="form-group">
-                    <label>성별</label>
-                    <select
+                  <div className="formGender-group">
+                    <label className="reg_title">성별</label>
+                    <select className="regBirthGender-input"
                       name="userGender"
                       value={form.userGender}
                       onChange={handleChange}
@@ -143,11 +145,11 @@ const Register = ({ setUserEmail }) => {
                   </div>
                 </div>
 
-                <div className="form-group">
-                  <label>전화번호</label>
-                  <input
+                <div className="name_num-group">
+                  <label className="reg_title">전화번호</label>
+                  <input className="reg-input"
                     name="userMobile"
-                    placeholder="전화번호를 입력해주세요"
+                    placeholder="010-1234-5678"
                     value={form.userMobile}
                     onChange={handleChange}
                     required
@@ -158,22 +160,22 @@ const Register = ({ setUserEmail }) => {
 
             {step === 2 && (
               <>
-                <div className="form-group">
-                  <label>이메일</label>
-                  <input
+                <div className="name_num-group">
+                  <label className="reg_title">이메일</label>
+                  <input className="reg-input"
                     name="userEmail"
                     placeholder="email@example.com"
                     value={form.userEmail}
                     onChange={handleChange}
                     required
                   />
-                  {emailError && <p className="error-text">{emailError}</p>}
+                  {emailError && <p className="error-text2">{emailError}</p>}
                 </div>
 
-                <div className="form-group password-group">
-                  <label>비밀번호</label>
+                <div className="name_num-group">
+                  <label className="reg_title">비밀번호</label>
                   <div className="input-with-icon">
-                    <input
+                    <input className="reg-input"
                       type={showPassword ? "text" : "password"}
                       name="userPasswd"
                       placeholder="비밀번호를 입력해주세요"
@@ -193,13 +195,13 @@ const Register = ({ setUserEmail }) => {
                       />
                     </button>
                   </div>
-                  {passwordError && <p className="error-text">{passwordError}</p>}
+                  {passwordError && <p className="error-text2">{passwordError}</p>}
                 </div>
 
-                <div className="form-group password-group">
-                  <label>비밀번호 확인</label>
+                <div className="name_num-group">
+                  <label className="reg_title">비밀번호 확인</label>
                   <div className="input-with-icon">
-                    <input
+                    <input className="reg-input"
                       type={showPasswordConfirm ? "text" : "password"}
                       name="userPasswdConfirm"
                       placeholder="비밀번호를 다시 입력해주세요"
@@ -221,7 +223,7 @@ const Register = ({ setUserEmail }) => {
                   </div>
                   {form.userPasswdConfirm &&
                     form.userPasswd !== form.userPasswdConfirm && (
-                      <p className="error-text">비밀번호가 일치하지 않습니다</p>
+                      <p className="error-text2">비밀번호가 일치하지 않습니다</p>
                     )}
                 </div>
               </>
@@ -230,12 +232,12 @@ const Register = ({ setUserEmail }) => {
             <button
               type="submit"
               className={`register-button ${step === 1
-                  ? isStep1Valid
-                    ? "active"
-                    : ""
-                  : isStep2Valid
-                    ? "active"
-                    : ""
+                ? isStep1Valid
+                  ? "active"
+                  : ""
+                : isStep2Valid
+                  ? "active"
+                  : ""
                 }`}
               disabled={step === 1 ? !isStep1Valid : !isStep2Valid}
             >

@@ -90,20 +90,10 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap:5px;
 }
 
-.name-group {
-  display: flex;
-  width: 682px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  margin: 12px 292px auto 291px;
-
-}
-
-.reg_name {
+.reg_title {
   color: var(--Black, #000);
   text-align: center;
   font-family: Pretendard;
@@ -113,21 +103,134 @@
   line-height: normal;
 }
 
-.name-group input {
+.name_num-group {
   display: flex;
-  height: 80px;
+  width: 682px;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
-  align-self: stretch;
+  margin: 12px 292px auto 291px;
+
+}
+
+.formbirth-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 12px 15px auto 291px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.reg-input {
+  height: 80px;
+  width: 682px;
   border-radius: 12px;
   border: 2px solid var(--Neutral-neutral_200, #C6C6C6);
   background: var(--White, #FFF);
   font-family: Pretendard;
   font-size: 26px;
+  font-weight: 500;
+  padding-left: 30px;
+}
+
+.regBirthGender-input {
+  height: 80px;
+  width: 340px;
+  border-radius: 12px;
+  border: 2px solid var(--Neutral-neutral_200, #C6C6C6);
+  background: var(--White, #FFF);
+  font-family: Pretendard;
+  font-size: 24px;
+  font-weight: 500;
+  padding-left: 24px;
+}
+
+.formGender-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* .register-button {
+  height: 80px;
+  width: 720px;
+  border-radius: 12px;
+  font-family: Pretendard;
+  font-size: 26px;
+  font-weight: 500;
+  padding-left: 30px;
+  margin: 12px 292px auto 291px;
+} */
+
+.register-button {
+  height: 80px;
+  width: 720px;
+  border-radius: 12px;
+  font-family: Pretendard;
+  font-size: 26px;
+  font-weight: 500;
+  padding-left: 30px;
+  margin: 12px 292px auto 291px;
+  border: none;
+  border-radius: 8px;
+  background-color: #8e8e8e;
+  /* 비활성 회색 */
+  color: white;
+  margin-top: 12px;
+  cursor: not-allowed;
+  transition: background-color 0.3s ease;
+}
+
+/* 버튼 활성화 스타일 */
+.register-button.active {
+  background-color: #8321ff;
+  cursor: pointer;
+}
+.login-link {
+  color: var(--Neutral-neutral_600, #555);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  padding-left: 30px;
+  margin-top: 40px;
+}
+
+
+.toggle-visibility {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.eye-icon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.6;
+}
+.input-with-icon {
+  position: relative;
+}
+
+.error-text2 {
+  color: #FF0000;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Pretendard;
+  margin: 4px 0 0 0;
+  padding-left: 8px;
 }

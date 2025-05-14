@@ -115,7 +115,6 @@
 
   width: 682px;
   height: 85px;
-  padding: 31px 17px;
   margin: 0 auto 24px 195px;
 
   border: 2px solid var(--Neutral-neutral_200, #C6C6C6);
@@ -126,7 +125,7 @@
 
 
 .input-wrapper input {
-  width: 100%;
+  width: 90%;
   height: 100%;
   border: none;
   outline: none;
@@ -134,8 +133,6 @@
   font-weight: 600;
   font-family: Pretendard;
   color: #000;
-
-
 }
 
 .input-wrapper input::placeholder {
@@ -194,9 +191,12 @@ background: var(--Babypink, #FFF1F3);
 
 .error-text {
   color: #FF0000;
-  font-size: 16px;
-  margin: -16px 200px 16px 195px;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
   font-family: Pretendard;
+  margin-left: 200px;
+  margin-top: -18px;
 }
 
 /* 비밀번호 토글 버튼 */
